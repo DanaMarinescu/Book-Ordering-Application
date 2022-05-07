@@ -2,6 +2,7 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.exceptions.UserDoesNotExistException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.model.User;
 
@@ -27,6 +28,16 @@ public class UserService {
     public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
         userRepository.insert(new User(username, encodePassword(username, password), role));
+    }
+    public static void checkUser(String username,String password, String role)throws UserDoesNotExistException {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                String encoded_pass = encodePassword(username, password);
+                if(encoded_pass.equals(user.getPassword()) && role.equals(user.getRole()))
+                    return;
+            }
+        }
+        throw new UserDoesNotExistException(username);
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
