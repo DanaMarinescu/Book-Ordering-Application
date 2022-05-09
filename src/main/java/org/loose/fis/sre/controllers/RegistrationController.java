@@ -41,17 +41,4 @@ public class RegistrationController {
         }
     }
 
-    @FXML
-    private Button Login;
-
-    @FXML
-    public void goToLogIn()throws IOException {
-        Stage stage=(Stage) Login.getScene().getWindow();
-        stage.close();
-        Stage primaryStage= new Stage();
-        Parent root= FXMLLoader.load(getClass().getResource("login.fxml"));
-        primaryStage.setTitle("LogIn Page");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
 }
