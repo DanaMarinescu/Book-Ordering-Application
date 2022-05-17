@@ -2,6 +2,7 @@ package org.loose.fis.sre.services;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.BookAlreadyExistsException;
 import org.loose.fis.sre.model.Book;
@@ -33,6 +34,19 @@ public class BookService {
     public static void addBook(String publishingHouse, String title, int year, String authorName)throws BookAlreadyExistsException{
         checkBookDoesNotAlreadyExist(title);
         bookRepository.insert(new Book(publishingHouse,title,year,authorName));
+    }
+
+    public static void editBook(String publishingHouse, String title, int year, String authorName){
+        for(Book book:bookRepository.find()){
+            if(Objects.equals(title,book.getTitle())){
+                bookRepository.remove(book);
+                bookRepository.insert(new Book(publishingHouse,title,year,authorName));
+            }
+        }
+    }
+
+    public static void deleteBook(Book book){
+        bookRepository.remove(book);
     }
 
     public static void checkBookDoesNotAlreadyExist(String title) throws BookAlreadyExistsException {

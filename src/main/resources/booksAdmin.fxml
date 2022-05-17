@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BooksAdminController">
   <columnConstraints>
@@ -31,10 +32,11 @@
                               <Button layoutX="357.0" layoutY="3.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="239.0" text="Edit" />
                            </children>
                         </AnchorPane>
-                        <TextField layoutX="402.0" layoutY="97.0" text="Publishing House" />
+                        <TextField fx:id="publishingHouseName" layoutX="402.0" layoutY="97.0" text="Publishing House" />
                         <TextField layoutX="402.0" layoutY="135.0" text="Title" />
                         <TextField layoutX="402.0" layoutY="173.0" text="Year" />
                         <TextField layoutX="402.0" layoutY="210.0" text="Atuhor Name" />
+                        <Text fx:id="editMessage" layoutX="446.0" layoutY="272.0" wrappingWidth="60.199981689453125" />
                      </children>
                   </AnchorPane>
                </content>

@@ -12,13 +12,39 @@
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
-    <Text id="title-text" text="Admin Home Page" wrappingWidth="133.3441162109375" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+    <Text id="title-text" text="Admin Home Page" wrappingWidth="133.3441162109375" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
       <font>
          <Font size="15.0" />
       </font></Text>
-   <Button fx:id="AvailableBooks" mnemonicParsing="false" text="Available Books" onAction="#viewAvailableBooks" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-   <Button fx:id="CurrentOrders" mnemonicParsing="false" text="Current Orders" onAction="#viewCurrentOrders" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-   <Button fx:id="PastOrders" mnemonicParsing="false" text="Past Orders" onAction="#viewPastOrders" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+   <Button fx:id="AvailableBooks" mnemonicParsing="false" onAction="#viewAvailableBooks" text="Available Books" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+   <Button fx:id="CurrentOrders" mnemonicParsing="false" onAction="#viewCurrentOrders" text="Current Orders" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+   <Button fx:id="PastOrders" mnemonicParsing="false" onAction="#viewPastOrders" text="Past Orders" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 
 
 </GridPane>
