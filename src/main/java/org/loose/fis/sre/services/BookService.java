@@ -36,11 +36,8 @@ public class BookService {
     }
 
     public static void editBook(Book book,String publishingHouse, String title, int year, float price, String authorName){
-        book.setPublishingHouse(publishingHouse);
-        book.setTitle(title);
-        book.setYear(year);
-        book.setPrice(price);
-        book.setAuthorName(authorName);
+        bookRepository.remove(book);
+        bookRepository.insert(new Book(publishingHouse,title,year,price,authorName));
     }
 
     public static void deleteBook(Book book){

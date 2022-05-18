@@ -95,15 +95,19 @@ public class BooksAdminController implements Initializable {
     public void editBook(){
         if(editPublishinghouseName.getText()!=null && editBookTitle.getText()!=null && Integer.parseInt(editYear.getText())!=0 &&editAuthorName.getText()!=null){
             BookService.editBook(editTable.getSelectionModel().getSelectedItem(),editPublishinghouseName.getText(),editBookTitle.getText(),Integer.parseInt(editYear.getText()),Float.valueOf(editPrice.getText()),editAuthorName.getText());
-
+            editTable.setItems(BookService.getBooks());
+            deleteTable.setItems(BookService.getBooks());
         }
         else editMessage.setText("Nu ati introdus toate datele cartii!");
     }
     @FXML
     public void addBook(){
         try {
-            if(addPublishingHouseName.getText()!=null && addBookTitle.getText()!=null && Integer.parseInt(addYear.getText())!=0 &&addAuthorName.getText()!=null)
-                BookService.addBook(addPublishingHouseName.getText(), addBookTitle.getText(), Integer.parseInt(addYear.getText()),Float.valueOf(addPrice.getText()), addAuthorName.getText());
+            if(addPublishingHouseName.getText()!=null && addBookTitle.getText()!=null && Integer.parseInt(addYear.getText())!=0 &&addAuthorName.getText()!=null) {
+                BookService.addBook(addPublishingHouseName.getText(), addBookTitle.getText(), Integer.parseInt(addYear.getText()), Float.valueOf(addPrice.getText()), addAuthorName.getText());
+                editTable.setItems(BookService.getBooks());
+                deleteTable.setItems(BookService.getBooks());
+            }
             else editMessage.setText("Nu ati introdus toate datele cartii!");
         }catch(BookAlreadyExistsException e){
             editMessage.setText(e.getMessage());
@@ -113,6 +117,7 @@ public class BooksAdminController implements Initializable {
     @FXML
     public void deleteBook(){
         BookService.deleteBook(deleteTable.getSelectionModel().getSelectedItem());
-
+        editTable.setItems(BookService.getBooks());
+        deleteTable.setItems(BookService.getBooks());
     }
 }
