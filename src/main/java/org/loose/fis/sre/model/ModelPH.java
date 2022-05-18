@@ -9,6 +9,9 @@ public class ModelPH {
         this.role = role;
     }
 
+    public ModelPH(){
+
+    }
     public String getName() {
         return name;
     }
