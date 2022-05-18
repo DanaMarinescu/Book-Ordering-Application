@@ -1,5 +1,8 @@
 package org.loose.fis.sre.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
@@ -9,6 +12,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import org.loose.fis.sre.exceptions.BookAlreadyExistsException;
 import org.loose.fis.sre.model.Book;
 import org.loose.fis.sre.services.BookService;
@@ -87,6 +91,16 @@ public class BooksAdminController implements Initializable {
         deleteAuthorName.setCellValueFactory(new PropertyValueFactory<>("authorName"));
         editTable.setItems(BookService.getBooks());
         deleteTable.setItems(BookService.getBooks());
+        editTable.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                editPublishinghouseName.setText(editTable.getSelectionModel().getSelectedItem().getPublishingHouse());
+                editBookTitle.setText(editTable.getSelectionModel().getSelectedItem().getTitle());
+                editYear.setText(Integer.toString(editTable.getSelectionModel().getSelectedItem().getYear()));
+                editPrice.setText(Float.toString(editTable.getSelectionModel().getSelectedItem().getPrice()));
+                editAuthorName.setText(editTable.getSelectionModel().getSelectedItem().getAuthorName());
+            }
+        });
     }
 
 

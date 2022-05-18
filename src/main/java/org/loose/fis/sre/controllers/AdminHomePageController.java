@@ -24,9 +24,8 @@ public class AdminHomePageController {
 
     @FXML
     public void viewAvailableBooks(javafx.event.ActionEvent actionEvent)throws IOException {
-        Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("booksAdmin.fxml"));
+        scene=new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("booksAdmin.fxml")));
         window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        scene=new Scene(root);
         window.setScene(scene);
         window.show();
     }
