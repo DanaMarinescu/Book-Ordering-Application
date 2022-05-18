@@ -6,7 +6,6 @@ import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.BookAlreadyExistsException;
 import org.loose.fis.sre.model.Book;
-import org.loose.fis.sre.model.User;
 
 import java.util.Objects;
 
@@ -22,7 +21,7 @@ public class BookService {
 
         bookRepository = database.getRepository(Book.class);
     }
-    public static ObservableList getBooks(){
+    public static ObservableList<Book> getBooks(){
         ObservableList bookList= FXCollections.observableArrayList();
         bookList.removeAll();
         for (Book book:bookRepository.find()){
@@ -31,18 +30,17 @@ public class BookService {
         return bookList;
     }
 
-    public static void addBook(String publishingHouse, String title, int year, String authorName)throws BookAlreadyExistsException{
+    public static void addBook(String publishingHouse, String title, int year,float price, String authorName)throws BookAlreadyExistsException{
         checkBookDoesNotAlreadyExist(title);
-        bookRepository.insert(new Book(publishingHouse,title,year,authorName));
+        bookRepository.insert(new Book(publishingHouse,title,year,price,authorName));
     }
 
-    public static void editBook(String publishingHouse, String title, int year, String authorName){
-        for(Book book:bookRepository.find()){
-            if(Objects.equals(title,book.getTitle())){
-                bookRepository.remove(book);
-                bookRepository.insert(new Book(publishingHouse,title,year,authorName));
-            }
-        }
+    public static void editBook(Book book,String publishingHouse, String title, int year, float price, String authorName){
+        book.setPublishingHouse(publishingHouse);
+        book.setTitle(title);
+        book.setYear(year);
+        book.setPrice(price);
+        book.setAuthorName(authorName);
     }
 
     public static void deleteBook(Book book){

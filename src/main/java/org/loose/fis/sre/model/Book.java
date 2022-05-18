@@ -9,13 +9,15 @@ public class Book {
     private String publishingHouse;
     private String title;
     private int year;
+    private float price;
     private String authorName;
 
 
-    public Book(String publishingHouse, String title, int year, String authorName) {
+    public Book(String publishingHouse, String title, int year, float price, String authorName) {
         this.publishingHouse = publishingHouse;
         this.title = title;
         this.year = year;
+        this.price = price;
         this.authorName = authorName;
     }
 
@@ -55,16 +57,25 @@ public class Book {
         this.authorName = authorName;
     }
 
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return year == book.year && Objects.equals(publishingHouse, book.publishingHouse) && Objects.equals(title, book.title) && Objects.equals(authorName, book.authorName);
+        return year == book.year && Float.compare(book.price, price) == 0 && Objects.equals(publishingHouse, book.publishingHouse) && Objects.equals(title, book.title) && Objects.equals(authorName, book.authorName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(publishingHouse, title, year, authorName);
+        return Objects.hash(publishingHouse, title, year, price, authorName);
     }
 }
