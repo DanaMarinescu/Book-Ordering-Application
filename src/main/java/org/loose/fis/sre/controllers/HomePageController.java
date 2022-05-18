@@ -32,9 +32,8 @@ public class HomePageController{
 
         @FXML
         public void PublishingHouses(ActionEvent event) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("PublishingHouses.fxml")); //Publishing Houses page
+            scene = new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("PublishingHouses.fxml")));
             window= (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
             window.setScene(scene);
             window.show();
         }

@@ -8,7 +8,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" prefHeight="400" prefWidth="600" style="-fx-background-color: #87CEFA;" vgap="10" xmlns="http://javafx.com/javafx/18"
+<GridPane alignment="center" hgap="10" prefHeight="400" prefWidth="600" style="-fx-background-color: #87CEFA;" vgap="10"
+          xmlns="http://javafx.com/javafx/18"
           xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="org.loose.fis.sre.controllers.HomePageController">
    <padding>
@@ -18,7 +19,7 @@
       <font>
          <Font name="Bodoni MT Black" size="23.0" />
       </font></Text>
-   <Button mnemonicParsing="false" onAction="#PublishingHouses" prefHeight="27.0" prefWidth="146.0" text="Publishing Houses" textFill="#4c2e99" GridPane.columnIndex="8" GridPane.rowIndex="3">
+   <Button fx:id="PublishingHouses" mnemonicParsing="false" onAction="#PublishingHouses" prefHeight="27.0" prefWidth="146.0" text="Publishing Houses" textFill="#4c2e99" GridPane.columnIndex="8" GridPane.rowIndex="3">
       <font>
          <Font name="Bodoni MT" size="14.0" />
       </font>
