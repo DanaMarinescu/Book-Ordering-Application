@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.loose.fis.sre.services.BookService;
 import org.loose.fis.sre.services.FileSystemService;
+import org.loose.fis.sre.services.OrderService;
 import org.loose.fis.sre.services.UserService;
 
 import java.nio.file.Files;
@@ -19,6 +20,7 @@ public class Main extends Application {
         initDirectory();
         UserService.initDatabase();
         BookService.initDatabase();
+        OrderService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Book Ordering Application");
         primaryStage.setScene(new Scene(root, 300, 275));
