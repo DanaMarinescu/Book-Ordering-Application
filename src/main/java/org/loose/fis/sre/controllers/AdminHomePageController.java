@@ -18,6 +18,8 @@ public class AdminHomePageController {
     private Button CurrentOrders;
     @FXML
     private Button PastOrders;
+    @FXML
+    private Button LogOut;
 
     private Stage window;
     private Scene scene;
@@ -36,5 +38,13 @@ public class AdminHomePageController {
     @FXML
     public void viewPastOrders(){
 
+    }
+
+    @FXML
+    public void goToLogin(javafx.event.ActionEvent actionEvent)throws IOException{
+        scene=new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml")));
+        window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 }

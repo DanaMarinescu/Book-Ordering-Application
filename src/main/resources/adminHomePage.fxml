@@ -8,21 +8,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" prefHeight="400" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.AdminHomePageController">
+<GridPane alignment="center" hgap="10" prefHeight="400" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.AdminHomePageController">
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
-    <Text id="title-text" text="Admin Home Page" wrappingWidth="133.3441162109375" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+    <Text id="title-text" text="Admin Home Page" wrappingWidth="133.3441162109375" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
       <font>
          <Font size="15.0" />
       </font></Text>
-   <Button fx:id="AvailableBooks" mnemonicParsing="false" onAction="#viewAvailableBooks" text="Available Books" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-   <Button fx:id="CurrentOrders" mnemonicParsing="false" onAction="#viewCurrentOrders" text="Current Orders" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-   <Button fx:id="PastOrders" mnemonicParsing="false" onAction="#viewPastOrders" text="Past Orders" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+   <Button fx:id="AvailableBooks" mnemonicParsing="false" onAction="#viewAvailableBooks" prefHeight="30.0" prefWidth="100.0" text="Available Books" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+   <Button fx:id="CurrentOrders" mnemonicParsing="false" onAction="#viewCurrentOrders" prefHeight="30.0" prefWidth="100.0" text="Current Orders" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="14" GridPane.valignment="CENTER" />
+   <Button fx:id="PastOrders" mnemonicParsing="false" onAction="#viewPastOrders" prefHeight="30.0" prefWidth="100.0" text="Past Orders" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="18" GridPane.valignment="CENTER" />
+   <Button fx:id="LogOut" mnemonicParsing="false" onAction="#goToLogin" prefHeight="30.0" prefWidth="100.0" text="Log Out" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="18" />
    <columnConstraints>
       <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
+      <ColumnConstraints maxWidth="400.0" prefWidth="300.0" />
+      <ColumnConstraints maxWidth="200.0" prefWidth="200.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
