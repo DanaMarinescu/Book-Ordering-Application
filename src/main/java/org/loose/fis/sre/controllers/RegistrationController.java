@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.sre.services.PublishingHousesService;
 import org.loose.fis.sre.services.UserService;
 
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class RegistrationController {
     public void handleRegisterAction() {
         try {
             UserService.addUser(usernameField.getText(), passwordField.getText(), (String) role.getValue());
+            PublishingHousesService.addUser(usernameField.getText(),(String) role.getValue());
             registrationMessage.setText("Account created successfully!");
         } catch (UsernameAlreadyExistsException e) {
             registrationMessage.setText(e.getMessage());

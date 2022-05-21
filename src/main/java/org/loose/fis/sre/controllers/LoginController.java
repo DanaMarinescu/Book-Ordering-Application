@@ -30,16 +30,21 @@ public class LoginController {
     public static User currentUser;
 
     @FXML
-    public void handleLogInAction(javafx.event.ActionEvent actionEvent)throws IOException {
+
+    public void handleLogInAction(javafx.event.ActionEvent actionEvent) throws IOException {
         try {
-            currentUser=UserService.checkUser(usernameField.getText(), passwordField.getText());
-            BookService.initDatabase(currentUser.getUsername());
-            OrderService.initDatabase(currentUser.getUsername());
-            Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("adminHomePage.fxml"));
+            if(UserService.checkUser(usernameField.getText(), passwordField.getText()).equals("Client")){
+            Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("HomePage.fxml"));
             window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
             scene=new Scene(root);
             window.setScene(scene);
-            window.show();
+            window.show();}
+            else{
+                Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("adminHomePage.fxml"));
+                window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                scene=new Scene(root);
+                window.setScene(scene);
+                window.show();}
 
         } catch (UserDoesNotExistException e) {
             registrationMessage.setText(e.getMessage());
