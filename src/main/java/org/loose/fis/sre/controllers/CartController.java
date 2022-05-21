@@ -61,6 +61,10 @@ public class CartController implements Initializable {
         id_ms.setText("PLACED!");
     }
 
+    public static Book getSelectat(){
+        return selectat;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
