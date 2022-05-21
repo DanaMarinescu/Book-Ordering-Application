@@ -48,7 +48,7 @@ public class OrderService {
         ObservableList ordersList= FXCollections.observableArrayList();
         ordersList.removeAll();
         for (Order order:orderRepository.find()){
-            if(order.getStatus().equals("Accepted") || order.getStatus().equals("Rejected"))
+            if(order.getStatus().equals("Delivered"))
             ordersList.add(order);
         }
         return ordersList;

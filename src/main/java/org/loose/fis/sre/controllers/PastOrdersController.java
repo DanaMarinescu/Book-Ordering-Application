@@ -17,9 +17,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CurrentOrdersController implements Initializable {
+public class PastOrdersController implements Initializable {
     @FXML
-    private TableView<Order> currentOrders;
+    private TableView<Order> pastOrders;
     @FXML
     private TableColumn<Book,String> bookTitle;
     @FXML
@@ -41,23 +41,9 @@ public class CurrentOrdersController implements Initializable {
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        currentOrders.setItems(OrderService.getCurrentOrders());
+        pastOrders.setItems(OrderService.getPastOrders());
     }
 
-    public void acceptOrder(){
-        OrderService.editStatus(currentOrders.getSelectionModel().getSelectedItem(),"Accepted");
-        deliverOrder();
-        currentOrders.setItems(OrderService.getCurrentOrders());
-    }
-
-    private void deliverOrder(){
-        OrderService.editStatus(currentOrders.getSelectionModel().getSelectedItem(),"Delivered");
-    }
-
-    public void rejectOrder(){
-        OrderService.editStatus(currentOrders.getSelectionModel().getSelectedItem(),"Rejected");
-        currentOrders.setItems(OrderService.getCurrentOrders());
-    }
 
     public void goBack(javafx.event.ActionEvent actionEvent) throws IOException {
         scene=new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("adminHomePage.fxml")));

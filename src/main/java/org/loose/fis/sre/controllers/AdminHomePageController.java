@@ -39,8 +39,11 @@ public class AdminHomePageController {
         window.show();
     }
     @FXML
-    public void viewPastOrders(){
-
+    public void viewPastOrders(javafx.event.ActionEvent actionEvent)throws IOException{
+        scene=new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("pastOrders.fxml")));
+        window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 
     @FXML
