@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.BooksAdminController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="editBook" text="Edit Book">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="466.0" layoutY="3.0" mnemonicParsing="false" onAction="#editBook" prefHeight="30.0" prefWidth="130.0" text="Edit" />
+                        <TextField fx:id="editPublishinghouseName" layoutX="466.0" layoutY="80.0" prefHeight="30.0" prefWidth="130.0" text="Publishing House" />
+                        <TextField fx:id="editBookTitle" layoutX="466.0" layoutY="121.0" prefHeight="30.0" prefWidth="130.0" text="Title" />
+                        <TextField fx:id="editYear" layoutX="466.0" layoutY="161.0" prefHeight="30.0" prefWidth="130.0" text="Year" />
+                        <TextField fx:id="editPrice" layoutX="466.0" layoutY="200.0" prefHeight="30.0" prefWidth="130.0" text="Price" />
+                        <Text fx:id="editMessage" layoutX="446.0" layoutY="272.0" wrappingWidth="60.199981689453125" />
+                        <TextField fx:id="editAuthorName" layoutX="466.0" layoutY="241.0" prefHeight="30.0" prefWidth="130.0" text="Author Name" />
+                        <Button layoutX="466.0" layoutY="313.0" mnemonicParsing="false" onAction="#goBacktoHomePage" prefHeight="30.0" prefWidth="130.0" text="Back" />
+                        <TableView fx:id="editTable" layoutX="12.0" layoutY="12.0" prefHeight="346.0" prefWidth="453.0">
+                           <columns>
+                              <TableColumn fx:id="bookTitle" prefWidth="205.0" text="Title" />
+                              <TableColumn fx:id="year" minWidth="0.0" prefWidth="60.0" text="Year" />
+                              <TableColumn fx:id="price" prefWidth="60.0" text="Price" />
+                              <TableColumn fx:id="authorName" prefWidth="135.0" text="Author Name" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="addBook" text="Add Book">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="addBookTitle" layoutX="186.0" layoutY="86.0" text="Title" />
+                        <TextField fx:id="addYear" layoutX="186.0" layoutY="132.0" text="Year" />
+                        <TextField fx:id="addAuthorName" layoutX="186.0" layoutY="214.0" text="Author Name" />
+                        <Button layoutX="235.0" layoutY="288.0" mnemonicParsing="false" onAction="#addBook" prefHeight="31.0" prefWidth="52.0" text="Add" />
+                        <TextField fx:id="addPrice" layoutX="186.0" layoutY="173.0" text="Price" />
+                        <Button layoutX="466.0" layoutY="313.0" mnemonicParsing="false" onAction="#goBacktoHomePage" prefHeight="30.0" prefWidth="130.0" text="Back" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="deleteBook" text="Delete Book">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="466.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="48.0" prefWidth="130.0" text="Delete" />
+                        <TableView fx:id="deleteTable" prefHeight="356.0" prefWidth="462.0">
+                           <columns>
+                              <TableColumn fx:id="deleteBookTitle" prefWidth="205.0" text="Title" />
+                              <TableColumn fx:id="deleteYear" prefWidth="60.0" text="Year" />
+                              <TableColumn fx:id="deletePrice" prefWidth="60.0" text="Price" />
+                              <TableColumn fx:id="deleteAuthorName" prefWidth="140.0" text="Author Name" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="466.0" layoutY="313.0" mnemonicParsing="false" onAction="#goBacktoHomePage" prefHeight="30.0" prefWidth="130.0" text="Back" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</GridPane>
