@@ -1,9 +1,14 @@
 package org.loose.fis.sre.model;
 
+import org.dizitart.no2.IndexType;
 import org.dizitart.no2.objects.Id;
+import org.dizitart.no2.objects.Index;
+import org.dizitart.no2.objects.Indices;
 
 import java.util.Objects;
-
+@Indices({
+        @Index(value = "user",type= IndexType.NonUnique)
+})
 public class Order {
 
     @Id
@@ -13,17 +18,21 @@ public class Order {
     private float price;
     private String status;
     private int stock;
+    private String user;
 
     public Order(){}
 
-    public Order(String bookTitle, String author, int year, float price, String status,int stock) {
+
+    public Order(String bookTitle, String author, int year, float price, String status,int stock,String user) {
         this.bookTitle = bookTitle;
         this.author = author;
         this.year = year;
         this.price = price;
         this.status = status;
         this.stock=stock;
+        this.user=user;
     }
+
 
     public String getBookTitle() {
         return bookTitle;
@@ -73,17 +82,24 @@ public class Order {
         this.stock = stock;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String userID) {
+        this.user = user;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return year == order.year && Float.compare(order.price, price) == 0 && stock == order.stock && Objects.equals(bookTitle, order.bookTitle) && Objects.equals(author, order.author) && Objects.equals(status, order.status);
+        return year == order.year && Float.compare(order.price, price) == 0 && stock == order.stock && Objects.equals(bookTitle, order.bookTitle) && Objects.equals(author, order.author) && Objects.equals(status, order.status) && Objects.equals(user, order.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookTitle, author, year, price, status, stock);
+        return Objects.hash(bookTitle, author, year, price, status, stock, user);
     }
 }
