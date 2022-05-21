@@ -29,6 +29,7 @@ public class PublishingHousesController implements Initializable  {
     private Stage window;
     private Scene scene;
     private Parent root;
+    private static String selectat;
 
     @FXML
     void toHomePage(javafx.event.ActionEvent actionEvent) throws IOException {
@@ -39,11 +40,28 @@ public class PublishingHousesController implements Initializable  {
         window.show();
     }
 
+
+    public void seeBooks(javafx.event.ActionEvent actionEvent) throws IOException {
+       selectat=table.getSelectionModel().getSelectedItem().getName();
+
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Books.fxml"));
+        window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        window.setScene(scene);
+        window.show();
+    }
+
+    public static String getSelectat(){
+        return selectat;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        col_name.setCellValueFactory(new PropertyValueFactory<ModelPH, String>("name"));
 
        table.setItems(PublishingHousesService.getPublishingHouses());
+
+
     }
 }
 
