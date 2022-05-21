@@ -16,7 +16,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.BookAlreadyExistsException;
 import org.loose.fis.sre.model.Book;
@@ -36,10 +35,7 @@ public class BooksAdminController implements Initializable {
     private Tab addBook;
     @FXML
     private Tab deleteBook;
-    @FXML
-    private TextField addPublishingHouseName;
-    @FXML
-    private TextField editPublishinghouseName;
+
     @FXML
     private TextField addBookTitle;
     @FXML
@@ -88,7 +84,6 @@ public class BooksAdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        publishingHouse.setCellValueFactory(new PropertyValueFactory<>("publishingHouse"));
         bookTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -103,7 +98,6 @@ public class BooksAdminController implements Initializable {
         editTable.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                editPublishinghouseName.setText(editTable.getSelectionModel().getSelectedItem().getPublishingHouse());
                 editBookTitle.setText(editTable.getSelectionModel().getSelectedItem().getTitle());
                 editYear.setText(Integer.toString(editTable.getSelectionModel().getSelectedItem().getYear()));
                 editPrice.setText(Float.toString(editTable.getSelectionModel().getSelectedItem().getPrice()));
@@ -116,8 +110,8 @@ public class BooksAdminController implements Initializable {
 
     @FXML
     public void editBook(){
-        if(editPublishinghouseName.getText()!=null && editBookTitle.getText()!=null && Integer.parseInt(editYear.getText())!=0 &&editAuthorName.getText()!=null){
-            BookService.editBook(editTable.getSelectionModel().getSelectedItem(),editPublishinghouseName.getText(),editBookTitle.getText(),Integer.parseInt(editYear.getText()),Float.valueOf(editPrice.getText()),editAuthorName.getText());
+        if( editBookTitle.getText()!=null && Integer.parseInt(editYear.getText())!=0 &&editAuthorName.getText()!=null){
+            BookService.editBook(editTable.getSelectionModel().getSelectedItem(),editBookTitle.getText(),Integer.parseInt(editYear.getText()),Float.valueOf(editPrice.getText()),editAuthorName.getText());
             editTable.setItems(BookService.getBooks());
             deleteTable.setItems(BookService.getBooks());
         }
@@ -126,8 +120,8 @@ public class BooksAdminController implements Initializable {
     @FXML
     public void addBook(){
         try {
-            if(addPublishingHouseName.getText()!=null && addBookTitle.getText()!=null && Integer.parseInt(addYear.getText())!=0 &&addAuthorName.getText()!=null) {
-                BookService.addBook(addPublishingHouseName.getText(), addBookTitle.getText(), Integer.parseInt(addYear.getText()), Float.valueOf(addPrice.getText()), addAuthorName.getText());
+            if(addBookTitle.getText()!=null && Integer.parseInt(addYear.getText())!=0 &&addAuthorName.getText()!=null) {
+                BookService.addBook(addBookTitle.getText(), Integer.parseInt(addYear.getText()), Float.valueOf(addPrice.getText()), addAuthorName.getText());
                 editTable.setItems(BookService.getBooks());
                 deleteTable.setItems(BookService.getBooks());
             }

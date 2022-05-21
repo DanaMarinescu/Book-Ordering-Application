@@ -6,15 +6,13 @@ import java.util.Objects;
 
 public class Book {
     @Id
-    private String publishingHouse;
     private String title;
     private int year;
     private float price;
     private String authorName;
 
 
-    public Book(String publishingHouse, String title, int year, float price, String authorName) {
-        this.publishingHouse = publishingHouse;
+    public Book(String title, int year, float price, String authorName) {
         this.title = title;
         this.year = year;
         this.price = price;
@@ -25,9 +23,6 @@ public class Book {
 
     }
 
-    public String getPublishingHouse() {
-        return publishingHouse;
-    }
 
     public String getTitle() {
         return title;
@@ -39,10 +34,6 @@ public class Book {
 
     public String getAuthorName() {
         return authorName;
-    }
-
-    public void setPublishingHouse(String publishingHouse) {
-        this.publishingHouse = publishingHouse;
     }
 
     public void setTitle(String title) {
@@ -71,11 +62,11 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return year == book.year && Float.compare(book.price, price) == 0 && Objects.equals(publishingHouse, book.publishingHouse) && Objects.equals(title, book.title) && Objects.equals(authorName, book.authorName);
+        return year == book.year && Float.compare(book.price, price) == 0 && Objects.equals(title, book.title) && Objects.equals(authorName, book.authorName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(publishingHouse, title, year, price, authorName);
+        return Objects.hash(title, year, price, authorName);
     }
 }

@@ -14,9 +14,9 @@ import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 public class BookService {
     private static ObjectRepository<Book> bookRepository;
 
-    public static void initDatabase() {
+    public static void initDatabase(String publishingHouse) {
         Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("books.db").toFile())
+                .filePath(getPathToFile(publishingHouse+".db").toFile())
                 .openOrCreate("test", "test");
 
         bookRepository = database.getRepository(Book.class);
@@ -30,14 +30,24 @@ public class BookService {
         return bookList;
     }
 
-    public static void addBook(String publishingHouse, String title, int year,float price, String authorName)throws BookAlreadyExistsException{
+    public static void addBook(String title, int year,float price, String authorName)throws BookAlreadyExistsException{
         checkBookDoesNotAlreadyExist(title);
-        bookRepository.insert(new Book(publishingHouse,title,year,price,authorName));
+        bookRepository.insert(new Book(title,year,price,authorName));
     }
 
-    public static void editBook(Book book,String publishingHouse, String title, int year, float price, String authorName){
+    public static void editBook(Book book, String title, int year, float price, String authorName){
         bookRepository.remove(book);
-        bookRepository.insert(new Book(publishingHouse,title,year,price,authorName));
+        bookRepository.insert(new Book(title,year,price,authorName));
+    }
+
+    public static void clearDatabase(){
+        for (Book book: bookRepository.find()){
+            bookRepository.remove(book);
+        }
+    }
+
+    public static int getLastIndex(){
+       return getBooks().toArray().length;
     }
 
     public static void deleteBook(Book book){
