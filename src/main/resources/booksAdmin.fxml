@@ -22,7 +22,7 @@
    <children>
       <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="Edit Book">
+            <Tab fx:id="editBook" text="Edit Book">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -33,49 +33,46 @@
                         <TextField fx:id="editPrice" layoutX="466.0" layoutY="200.0" prefHeight="30.0" prefWidth="130.0" text="Price" />
                         <Text fx:id="editMessage" layoutX="446.0" layoutY="272.0" wrappingWidth="60.199981689453125" />
                         <TextField fx:id="editAuthorName" layoutX="466.0" layoutY="241.0" prefHeight="30.0" prefWidth="130.0" text="Author Name" />
-                        <TableView fx:id="editTable" layoutX="3.0" layoutY="10.0" prefHeight="346.0" prefWidth="453.0">
-                          <columns>
-                            <TableColumn fx:id="publishingHouse" prefWidth="112.0" text="Publishing House" />
-                            <TableColumn fx:id="bookTitle" prefWidth="136.79998779296875" text="Title" />
-                              <TableColumn fx:id="year" prefWidth="38.4000244140625" text="Year" />
-                              <TableColumn fx:id="price" prefWidth="40.79998779296875" text="Price" />
-                              <TableColumn fx:id="authorName" prefWidth="125.59991455078125" text="Author Name" />
-                          </columns>
+                        <Button layoutX="466.0" layoutY="313.0" mnemonicParsing="false" onAction="#goBacktoHomePage" prefHeight="30.0" prefWidth="130.0" text="Back" />
+                        <TableView fx:id="editTable" layoutX="12.0" layoutY="12.0" prefHeight="346.0" prefWidth="453.0">
+                           <columns>
+                              <TableColumn fx:id="bookTitle" prefWidth="205.0" text="Title" />
+                              <TableColumn fx:id="year" minWidth="0.0" prefWidth="60.0" text="Year" />
+                              <TableColumn fx:id="price" prefWidth="60.0" text="Price" />
+                              <TableColumn fx:id="authorName" prefWidth="135.0" text="Author Name" />
+                           </columns>
                         </TableView>
-                        <Button onAction="#goBacktoHomePage" layoutX="466.0" layoutY="313.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" text="Back" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Add Book">
+            <Tab fx:id="addBook" text="Add Book">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="addPublishingHouseName" layoutX="185.0" layoutY="68.0" text="Publishing House" />
-                        <TextField fx:id="addBookTitle" layoutX="186.0" layoutY="109.0" text="Title" />
-                        <TextField fx:id="addYear" layoutX="186.0" layoutY="150.0" text="Year" />
-                        <TextField fx:id="addAuthorName" layoutX="186.0" layoutY="236.0" text="Author Name" />
+                        <TextField fx:id="addBookTitle" layoutX="186.0" layoutY="86.0" text="Title" />
+                        <TextField fx:id="addYear" layoutX="186.0" layoutY="132.0" text="Year" />
+                        <TextField fx:id="addAuthorName" layoutX="186.0" layoutY="214.0" text="Author Name" />
                         <Button layoutX="235.0" layoutY="288.0" mnemonicParsing="false" onAction="#addBook" prefHeight="31.0" prefWidth="52.0" text="Add" />
-                        <TextField fx:id="addPrice" layoutX="186.0" layoutY="192.0" text="Price" />
-                        <Button onAction="#goBacktoHomePage" layoutX="466.0" layoutY="313.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" text="Back" />
+                        <TextField fx:id="addPrice" layoutX="186.0" layoutY="173.0" text="Price" />
+                        <Button layoutX="466.0" layoutY="313.0" mnemonicParsing="false" onAction="#goBacktoHomePage" prefHeight="30.0" prefWidth="130.0" text="Back" />
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab text="Delete Book">
+            <Tab fx:id="deleteBook" text="Delete Book">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button layoutX="466.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="48.0" prefWidth="130.0" text="Delete" />
                         <TableView fx:id="deleteTable" prefHeight="356.0" prefWidth="462.0">
                            <columns>
-                              <TableColumn fx:id="deletePublishingHouse" prefWidth="112.0" text="Publishing House" />
-                              <TableColumn fx:id="deleteBookTitle" prefWidth="136.79998779296875" text="Title" />
-                              <TableColumn fx:id="deleteYear" prefWidth="38.4000244140625" text="Year" />
-                              <TableColumn fx:id="deletePrice" prefWidth="40.79998779296875" text="Price" />
-                              <TableColumn fx:id="deleteAuthorName" prefWidth="141.6000244140625" text="Author Name" />
+                              <TableColumn fx:id="deleteBookTitle" prefWidth="205.0" text="Title" />
+                              <TableColumn fx:id="deleteYear" prefWidth="60.0" text="Year" />
+                              <TableColumn fx:id="deletePrice" prefWidth="60.0" text="Price" />
+                              <TableColumn fx:id="deleteAuthorName" prefWidth="140.0" text="Author Name" />
                            </columns>
                         </TableView>
-                        <Button onAction="#goBacktoHomePage" layoutX="466.0" layoutY="313.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" text="Back" />
+                        <Button layoutX="466.0" layoutY="313.0" mnemonicParsing="false" onAction="#goBacktoHomePage" prefHeight="30.0" prefWidth="130.0" text="Back" />
                      </children></AnchorPane>
                </content>
             </Tab>

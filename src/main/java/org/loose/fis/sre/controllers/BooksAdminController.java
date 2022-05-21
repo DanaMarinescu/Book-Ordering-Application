@@ -59,8 +59,6 @@ public class BooksAdminController implements Initializable {
     @FXML
     private TableView<Book> deleteTable;
     @FXML
-    private TableColumn<Book,String> publishingHouse;
-    @FXML
     private TableColumn<Book,String> bookTitle;
     @FXML
     private TableColumn<Book,String> year;
@@ -68,8 +66,6 @@ public class BooksAdminController implements Initializable {
     private TableColumn<Book, String> price;
     @FXML
     private TableColumn<Book,String> authorName;
-    @FXML
-    private TableColumn<Book,String> deletePublishingHouse;
     @FXML
     private TableColumn<Book,String> deleteBookTitle;
     @FXML
@@ -88,7 +84,6 @@ public class BooksAdminController implements Initializable {
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         authorName.setCellValueFactory(new PropertyValueFactory<>("authorName"));
-        deletePublishingHouse.setCellValueFactory(new PropertyValueFactory<>("publishingHouse"));
         deleteBookTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         deleteYear.setCellValueFactory(new PropertyValueFactory<>("year"));
         deletePrice.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -110,7 +105,7 @@ public class BooksAdminController implements Initializable {
 
     @FXML
     public void editBook(){
-        if( editBookTitle.getText()!=null && Integer.parseInt(editYear.getText())!=0 &&editAuthorName.getText()!=null){
+        if(editBookTitle.getText()!=null && Integer.parseInt(editYear.getText())!=0 &&editAuthorName.getText()!=null){
             BookService.editBook(editTable.getSelectionModel().getSelectedItem(),editBookTitle.getText(),Integer.parseInt(editYear.getText()),Float.valueOf(editPrice.getText()),editAuthorName.getText());
             editTable.setItems(BookService.getBooks());
             deleteTable.setItems(BookService.getBooks());

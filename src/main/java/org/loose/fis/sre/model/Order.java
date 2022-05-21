@@ -7,8 +7,6 @@ import java.util.Objects;
 public class Order {
 
     @Id
-    private int bookID;
-    private String publishingHouse;
     private String bookTitle;
     private String author;
     private int year;
@@ -18,8 +16,7 @@ public class Order {
 
     public Order(){}
 
-    public Order(String publishingHouse,String bookTitle, String author, int year, float price, String status) {
-        this.publishingHouse=publishingHouse;
+    public Order(String bookTitle, String author, int year, float price, String status) {
         this.bookTitle = bookTitle;
         this.author = author;
         this.year = year;
@@ -68,24 +65,16 @@ public class Order {
     }
 
 
-    public String getPublishingHouse() {
-        return publishingHouse;
-    }
-
-    public void setPublishingHouse(String publishingHouse) {
-        this.publishingHouse = publishingHouse;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return year == order.year && Float.compare(order.price, price) == 0 && Objects.equals(publishingHouse, order.publishingHouse) && Objects.equals(bookTitle, order.bookTitle) && Objects.equals(author, order.author) && Objects.equals(status, order.status);
+        return year == order.year && Float.compare(order.price, price) == 0 && Objects.equals(bookTitle, order.bookTitle) && Objects.equals(author, order.author) && Objects.equals(status, order.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(publishingHouse, bookTitle, author, year, price, status);
+        return Objects.hash(bookTitle, author, year, price, status);
     }
 }

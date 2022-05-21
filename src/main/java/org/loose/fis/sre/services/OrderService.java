@@ -20,12 +20,12 @@ public class OrderService {
         orderRepository = database.getRepository(Order.class);
     }
     public static void addOrder(Book bookOrdered, String status) {
-        orderRepository.insert(new Order(bookOrdered.getPublishingHouse(),bookOrdered.getTitle(),bookOrdered.getAuthorName(),bookOrdered.getYear(),bookOrdered.getPrice(),status));
+        orderRepository.insert(new Order(bookOrdered.getTitle(),bookOrdered.getAuthorName(),bookOrdered.getYear(),bookOrdered.getPrice(),status));
     }
 
     public static void editStatus(Order order, String status){
        orderRepository.remove(order);
-       orderRepository.insert(new Order(order.getPublishingHouse(),order.getBookTitle(),order.getAuthor(),order.getYear(),order.getPrice(),status));
+       orderRepository.insert(new Order(order.getBookTitle(),order.getAuthor(),order.getYear(),order.getPrice(),status));
     }
 
     public static void clearDatabase(){
@@ -47,7 +47,7 @@ public class OrderService {
         ObservableList ordersList= FXCollections.observableArrayList();
         ordersList.removeAll();
         for (Order order:orderRepository.find()){
-            if(order.getStatus().equals("Placed") && order.getPublishingHouse().equals(publishingHouse))ordersList.add(order);
+            ordersList.add(order);
         }
         return ordersList;
     }
