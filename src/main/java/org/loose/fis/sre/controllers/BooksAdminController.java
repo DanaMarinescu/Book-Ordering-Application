@@ -47,7 +47,11 @@ public class BooksAdminController implements Initializable {
     @FXML
     private TextField addPrice;
     @FXML
+    private TextField addStock;
+    @FXML
     private TextField editPrice;
+    @FXML
+    private TextField editStock;
     @FXML
     private TextField addAuthorName;
     @FXML
@@ -64,6 +68,8 @@ public class BooksAdminController implements Initializable {
     private TableColumn<Book,String> year;
     @FXML
     private TableColumn<Book, String> price;
+    @FXML
+    private TableColumn<Book, Integer> stock;
     @FXML
     private TableColumn<Book,String> authorName;
     @FXML
@@ -84,6 +90,7 @@ public class BooksAdminController implements Initializable {
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         authorName.setCellValueFactory(new PropertyValueFactory<>("authorName"));
+        stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         deleteBookTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         deleteYear.setCellValueFactory(new PropertyValueFactory<>("year"));
         deletePrice.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -97,6 +104,7 @@ public class BooksAdminController implements Initializable {
                 editYear.setText(Integer.toString(editTable.getSelectionModel().getSelectedItem().getYear()));
                 editPrice.setText(Float.toString(editTable.getSelectionModel().getSelectedItem().getPrice()));
                 editAuthorName.setText(editTable.getSelectionModel().getSelectedItem().getAuthorName());
+                editStock.setText(Integer.toString(editTable.getSelectionModel().getSelectedItem().getStock()));
             }
         });
     }
@@ -106,7 +114,7 @@ public class BooksAdminController implements Initializable {
     @FXML
     public void editBook(){
         if(editBookTitle.getText()!=null && Integer.parseInt(editYear.getText())!=0 &&editAuthorName.getText()!=null){
-            BookService.editBook(editTable.getSelectionModel().getSelectedItem(),editBookTitle.getText(),Integer.parseInt(editYear.getText()),Float.valueOf(editPrice.getText()),editAuthorName.getText());
+            BookService.editBook(editTable.getSelectionModel().getSelectedItem(),editBookTitle.getText(),Integer.parseInt(editYear.getText()),Float.valueOf(editPrice.getText()),editAuthorName.getText(),Integer.parseInt(editStock.getText()));
             editTable.setItems(BookService.getBooks());
             deleteTable.setItems(BookService.getBooks());
         }
@@ -116,7 +124,7 @@ public class BooksAdminController implements Initializable {
     public void addBook(){
         try {
             if(addBookTitle.getText()!=null && Integer.parseInt(addYear.getText())!=0 &&addAuthorName.getText()!=null) {
-                BookService.addBook(addBookTitle.getText(), Integer.parseInt(addYear.getText()), Float.valueOf(addPrice.getText()), addAuthorName.getText());
+                BookService.addBook(addBookTitle.getText(), Integer.parseInt(addYear.getText()), Float.valueOf(addPrice.getText()), addAuthorName.getText(),Integer.parseInt(addStock.getText()));
                 editTable.setItems(BookService.getBooks());
                 deleteTable.setItems(BookService.getBooks());
             }

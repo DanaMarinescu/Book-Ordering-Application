@@ -44,7 +44,10 @@ public class LoginController {
                 window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
                 scene=new Scene(root);
                 window.setScene(scene);
-                window.show();}
+                window.show();
+                BookService.initDatabase(usernameField.getText());
+                OrderService.initDatabase(usernameField.getText());
+            }
 
         } catch (UserDoesNotExistException e) {
             registrationMessage.setText(e.getMessage());

@@ -10,17 +10,20 @@ public class Book {
     private int year;
     private float price;
     private String authorName;
+    private int stock;
 
 
-    public Book(String title, int year, float price, String authorName) {
+
+    public Book(){
+
+    }
+
+    public Book(String title, int year, float price, String authorName, int stock) {
         this.title = title;
         this.year = year;
         this.price = price;
         this.authorName = authorName;
-    }
-
-    public Book(){
-
+        this.stock = stock;
     }
 
 
@@ -57,16 +60,24 @@ public class Book {
     }
 
 
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return year == book.year && Float.compare(book.price, price) == 0 && Objects.equals(title, book.title) && Objects.equals(authorName, book.authorName);
+        return year == book.year && Float.compare(book.price, price) == 0 && stock == book.stock && Objects.equals(title, book.title) && Objects.equals(authorName, book.authorName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, year, price, authorName);
+        return Objects.hash(title, year, price, authorName, stock);
     }
 }

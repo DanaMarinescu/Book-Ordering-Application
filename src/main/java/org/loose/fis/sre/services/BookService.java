@@ -30,14 +30,14 @@ public class BookService {
         return bookList;
     }
 
-    public static void addBook(String title, int year,float price, String authorName)throws BookAlreadyExistsException{
+    public static void addBook(String title, int year,float price, String authorName,int stock)throws BookAlreadyExistsException{
         checkBookDoesNotAlreadyExist(title);
-        bookRepository.insert(new Book(title,year,price,authorName));
+        bookRepository.insert(new Book(title,year,price,authorName,stock));
     }
 
-    public static void editBook(Book book, String title, int year, float price, String authorName){
+    public static void editBook(Book book, String title, int year, float price, String authorName,int stock){
         bookRepository.remove(book);
-        bookRepository.insert(new Book(title,year,price,authorName));
+        bookRepository.insert(new Book(title,year,price,authorName,stock));
     }
 
     public static void clearDatabase(){

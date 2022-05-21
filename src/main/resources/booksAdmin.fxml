@@ -27,21 +27,23 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button layoutX="466.0" layoutY="3.0" mnemonicParsing="false" onAction="#editBook" prefHeight="30.0" prefWidth="130.0" text="Edit" />
-                        <TextField fx:id="editPublishinghouseName" layoutX="466.0" layoutY="80.0" prefHeight="30.0" prefWidth="130.0" text="Publishing House" />
-                        <TextField fx:id="editBookTitle" layoutX="466.0" layoutY="121.0" prefHeight="30.0" prefWidth="130.0" text="Title" />
-                        <TextField fx:id="editYear" layoutX="466.0" layoutY="161.0" prefHeight="30.0" prefWidth="130.0" text="Year" />
-                        <TextField fx:id="editPrice" layoutX="466.0" layoutY="200.0" prefHeight="30.0" prefWidth="130.0" text="Price" />
+                        <TextField fx:id="editPublishinghouseName" layoutX="466.0" layoutY="51.0" prefHeight="30.0" prefWidth="130.0" text="Publishing House" />
+                        <TextField fx:id="editBookTitle" layoutX="466.0" layoutY="92.0" prefHeight="30.0" prefWidth="130.0" text="Title" />
+                        <TextField fx:id="editYear" layoutX="466.0" layoutY="132.0" prefHeight="30.0" prefWidth="130.0" text="Year" />
+                        <TextField fx:id="editPrice" layoutX="466.0" layoutY="171.0" prefHeight="30.0" prefWidth="130.0" text="Price" />
                         <Text fx:id="editMessage" layoutX="446.0" layoutY="272.0" wrappingWidth="60.199981689453125" />
-                        <TextField fx:id="editAuthorName" layoutX="466.0" layoutY="241.0" prefHeight="30.0" prefWidth="130.0" text="Author Name" />
+                        <TextField fx:id="editAuthorName" layoutX="466.0" layoutY="212.0" prefHeight="30.0" prefWidth="130.0" text="Author Name" />
                         <Button layoutX="466.0" layoutY="313.0" mnemonicParsing="false" onAction="#goBacktoHomePage" prefHeight="30.0" prefWidth="130.0" text="Back" />
                         <TableView fx:id="editTable" layoutX="12.0" layoutY="12.0" prefHeight="346.0" prefWidth="453.0">
                            <columns>
-                              <TableColumn fx:id="bookTitle" prefWidth="205.0" text="Title" />
+                              <TableColumn fx:id="bookTitle" prefWidth="140.0" text="Title" />
                               <TableColumn fx:id="year" minWidth="0.0" prefWidth="60.0" text="Year" />
                               <TableColumn fx:id="price" prefWidth="60.0" text="Price" />
                               <TableColumn fx:id="authorName" prefWidth="135.0" text="Author Name" />
+                              <TableColumn fx:id="stock" prefWidth="60.0" text="Stock" />
                            </columns>
                         </TableView>
+                        <TextField fx:id="editStock" layoutX="466.0" layoutY="252.0" prefHeight="30.0" prefWidth="130.0" text="Stock" />
                      </children>
                   </AnchorPane>
                </content>
@@ -50,12 +52,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="addBookTitle" layoutX="186.0" layoutY="86.0" text="Title" />
-                        <TextField fx:id="addYear" layoutX="186.0" layoutY="132.0" text="Year" />
-                        <TextField fx:id="addAuthorName" layoutX="186.0" layoutY="214.0" text="Author Name" />
+                        <TextField fx:id="addBookTitle" layoutX="186.0" layoutY="52.0" text="Title" />
+                        <TextField fx:id="addYear" layoutX="186.0" layoutY="98.0" text="Year" />
+                        <TextField fx:id="addAuthorName" layoutX="186.0" layoutY="180.0" text="Author Name" />
                         <Button layoutX="235.0" layoutY="288.0" mnemonicParsing="false" onAction="#addBook" prefHeight="31.0" prefWidth="52.0" text="Add" />
-                        <TextField fx:id="addPrice" layoutX="186.0" layoutY="173.0" text="Price" />
+                        <TextField fx:id="addPrice" layoutX="186.0" layoutY="139.0" text="Price" />
                         <Button layoutX="466.0" layoutY="313.0" mnemonicParsing="false" onAction="#goBacktoHomePage" prefHeight="30.0" prefWidth="130.0" text="Back" />
+                        <TextField fx:id="addStock" layoutX="186.0" layoutY="222.0" text="Stock" />
                      </children></AnchorPane>
                </content>
             </Tab>
