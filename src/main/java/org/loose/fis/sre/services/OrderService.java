@@ -20,12 +20,13 @@ public class OrderService {
         orderRepository = database.getRepository(Order.class);
     }
     public static void addOrder(Book bookOrdered, String status) {
-        orderRepository.insert(new Order(bookOrdered.getTitle(),bookOrdered.getAuthorName(),bookOrdered.getYear(),bookOrdered.getPrice(),status));
+        bookOrdered.setStock(bookOrdered.getStock()-1);
+        orderRepository.insert(new Order(bookOrdered.getTitle(),bookOrdered.getAuthorName(),bookOrdered.getYear(),bookOrdered.getPrice(),status,bookOrdered.getStock()));
     }
 
     public static void editStatus(Order order, String status){
        orderRepository.remove(order);
-       orderRepository.insert(new Order(order.getBookTitle(),order.getAuthor(),order.getYear(),order.getPrice(),status));
+       orderRepository.insert(new Order(order.getBookTitle(),order.getAuthor(),order.getYear(),order.getPrice(),status, order.getStock()));
     }
 
     public static void clearDatabase(){
@@ -38,7 +39,7 @@ public class OrderService {
         ObservableList ordersList= FXCollections.observableArrayList();
         ordersList.removeAll();
         for (Order order:orderRepository.find()){
-            if(order.getStatus().equals("Placed"))
+            if(order.getStatus().equals("Placed") || order.getStatus().equals("Rejected"))
             ordersList.add(order);
         }
         return ordersList;

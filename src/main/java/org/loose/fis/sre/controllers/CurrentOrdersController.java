@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.loose.fis.sre.model.Book;
@@ -30,6 +31,10 @@ public class CurrentOrdersController implements Initializable {
     private TableColumn<Book, String> price;
     @FXML
     private TableColumn<Order,String> status;
+    @FXML
+    private TableColumn<Order,Integer>stock;
+    @FXML
+    private TextField orderAccept;
 
     private Scene scene;
     private Stage window;
@@ -40,14 +45,20 @@ public class CurrentOrdersController implements Initializable {
         year.setCellValueFactory(new PropertyValueFactory<>("year"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
-
+        stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         currentOrders.setItems(OrderService.getCurrentOrders());
     }
 
     public void acceptOrder(){
-        OrderService.editStatus(currentOrders.getSelectionModel().getSelectedItem(),"Accepted");
-        deliverOrder();
-        currentOrders.setItems(OrderService.getCurrentOrders());
+        if(currentOrders.getSelectionModel().getSelectedItem().getStock()>=1) {
+            OrderService.editStatus(currentOrders.getSelectionModel().getSelectedItem(), "Accepted");
+            deliverOrder();
+            currentOrders.setItems(OrderService.getCurrentOrders());
+        }else{
+            orderAccept.setText("Insufficient stock");
+            rejectOrder();
+        }
+
     }
 
     private void deliverOrder(){

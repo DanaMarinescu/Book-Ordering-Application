@@ -12,16 +12,17 @@ public class Order {
     private int year;
     private float price;
     private String status;
-
+    private int stock;
 
     public Order(){}
 
-    public Order(String bookTitle, String author, int year, float price, String status) {
+    public Order(String bookTitle, String author, int year, float price, String status,int stock) {
         this.bookTitle = bookTitle;
         this.author = author;
         this.year = year;
         this.price = price;
         this.status = status;
+        this.stock=stock;
     }
 
     public String getBookTitle() {
@@ -64,17 +65,25 @@ public class Order {
         this.status = status;
     }
 
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return year == order.year && Float.compare(order.price, price) == 0 && Objects.equals(bookTitle, order.bookTitle) && Objects.equals(author, order.author) && Objects.equals(status, order.status);
+        return year == order.year && Float.compare(order.price, price) == 0 && stock == order.stock && Objects.equals(bookTitle, order.bookTitle) && Objects.equals(author, order.author) && Objects.equals(status, order.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookTitle, author, year, price, status);
+        return Objects.hash(bookTitle, author, year, price, status, stock);
     }
 }
