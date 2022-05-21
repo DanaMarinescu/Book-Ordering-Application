@@ -5,24 +5,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.UserDoesNotExistException;
-import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.sre.model.Book;
+import org.loose.fis.sre.model.User;
+import org.loose.fis.sre.services.BookService;
+import org.loose.fis.sre.services.OrderService;
 import org.loose.fis.sre.services.UserService;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-
 public class LoginController {
     private Stage window;
     private Scene scene;
-    private Parent root;
 
     @FXML
     private Text registrationMessage;
@@ -31,7 +27,10 @@ public class LoginController {
     @FXML
     private TextField usernameField;
 
+    public static User currentUser;
+
     @FXML
+
     public void handleLogInAction(javafx.event.ActionEvent actionEvent) throws IOException {
         try {
             if(UserService.checkUser(usernameField.getText(), passwordField.getText()).equals("Client")){
@@ -46,6 +45,7 @@ public class LoginController {
                 scene=new Scene(root);
                 window.setScene(scene);
                 window.show();}
+
         } catch (UserDoesNotExistException e) {
             registrationMessage.setText(e.getMessage());
         }
@@ -59,7 +59,6 @@ public class LoginController {
             scene = new Scene(root);
             window.setScene(scene);
             window.show();
-
-        }
+    }
 
 }
