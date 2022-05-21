@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.BookAlreadyExistsException;
+import org.loose.fis.sre.exceptions.StockUnavailable;
 import org.loose.fis.sre.model.Book;
 import org.loose.fis.sre.services.BookService;
 
@@ -24,7 +25,7 @@ public class BooksController implements Initializable {
     private Stage window;
     private Scene scene;
     private Parent root;
-
+    private static Book select;
     @FXML
     private TableView<Book> bTable;
 
@@ -44,7 +45,18 @@ public class BooksController implements Initializable {
     private TableColumn<Book, Integer> id_year;
 
     @FXML
-    void toCart(javafx.event.ActionEvent actionEvent) throws IOException {
+    void toCart(javafx.event.ActionEvent actionEvent) throws IOException,StockUnavailable {
+        select=bTable.getSelectionModel().getSelectedItem();
+        try{
+                BookService.checkStock(select.getStock());
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Cart.fxml"));
+                window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                window.setScene(scene);
+                window.show();
+        } catch (StockUnavailable e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -57,6 +69,9 @@ public class BooksController implements Initializable {
         window.show();
     }
 
+    public static Book getSelect(){
+        return select;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
