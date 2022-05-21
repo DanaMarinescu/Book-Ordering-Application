@@ -47,6 +47,7 @@ public class LoginController {
                 window.show();
                 BookService.initDatabase(usernameField.getText());
                 OrderService.initDatabase(usernameField.getText());
+                OrderService.addOrder(usernameField.getText(),new Book("Iar123456789101112",253,589.58f,"Autor",26),"Placed");
             }
 
         } catch (UserDoesNotExistException e) {

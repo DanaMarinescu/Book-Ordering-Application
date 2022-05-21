@@ -49,10 +49,13 @@ public class CurrentOrdersController implements Initializable {
         currentOrders.setItems(OrderService.getCurrentOrders());
     }
 
-    public void acceptOrder(){
+    public void acceptOrder(javafx.event.ActionEvent actionEvent) throws IOException{
         if(currentOrders.getSelectionModel().getSelectedItem().getStock()>=1) {
             OrderService.editStatus(currentOrders.getSelectionModel().getSelectedItem(), "Accepted");
-            deliverOrder();
+            scene=new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("applyDiscount.fxml")));
+            window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
             currentOrders.setItems(OrderService.getCurrentOrders());
         }else{
             orderAccept.setText("Insufficient stock");
@@ -61,9 +64,6 @@ public class CurrentOrdersController implements Initializable {
 
     }
 
-    private void deliverOrder(){
-        OrderService.editStatus(currentOrders.getSelectionModel().getSelectedItem(),"Delivered");
-    }
 
     public void rejectOrder(){
         OrderService.editStatus(currentOrders.getSelectionModel().getSelectedItem(),"Rejected");
