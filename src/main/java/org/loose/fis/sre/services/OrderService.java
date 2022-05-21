@@ -34,19 +34,21 @@ public class OrderService {
         }
     }
 
-    public static ObservableList<Order> getCurrentOrders(String publishingHouse){
+    public static ObservableList<Order> getCurrentOrders(){
         ObservableList ordersList= FXCollections.observableArrayList();
         ordersList.removeAll();
         for (Order order:orderRepository.find()){
+            if(order.getStatus().equals("Placed"))
             ordersList.add(order);
         }
         return ordersList;
     }
 
-    public static ObservableList<Order> getPastOrders(String publishingHouse){
+    public static ObservableList<Order> getPastOrders(){
         ObservableList ordersList= FXCollections.observableArrayList();
         ordersList.removeAll();
         for (Order order:orderRepository.find()){
+            if(order.getStatus().equals("Accepted") || order.getStatus().equals("Rejected"))
             ordersList.add(order);
         }
         return ordersList;
