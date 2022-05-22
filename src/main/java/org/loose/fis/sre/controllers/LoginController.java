@@ -34,11 +34,13 @@ public class LoginController {
     public void handleLogInAction(javafx.event.ActionEvent actionEvent) throws IOException {
         try {
             if(UserService.checkUser(usernameField.getText(), passwordField.getText()).equals("Client")){
-            Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("HomePage.fxml"));
-            window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-            scene=new Scene(root);
-            window.setScene(scene);
-            window.show();}
+                currentUser=new User(usernameField.getText(),passwordField.getText(),"Client");
+                Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("HomePage.fxml"));
+                window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                scene=new Scene(root);
+                window.setScene(scene);
+                window.show();
+            }
             else{
                 Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("adminHomePage.fxml"));
                 window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

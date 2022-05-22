@@ -5,6 +5,7 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.BookAlreadyExistsException;
+import org.loose.fis.sre.exceptions.StockUnavailable;
 import org.loose.fis.sre.model.Book;
 
 import java.util.Objects;
@@ -61,4 +62,10 @@ public class BookService {
             }
         }
     }
-}
+    public static void checkStock(int stock) throws StockUnavailable {
+            if(stock<=0)
+                throw new StockUnavailable(stock);
+        }
+
+    }
+
