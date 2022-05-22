@@ -64,10 +64,11 @@ public class OrderService {
         return ordersList;
     }
 
-    public static ObservableList<Order> getClientOrders(){
+    public static ObservableList<Order> getClientOrders(String username){
         ObservableList ordersList= FXCollections.observableArrayList();
         ordersList.removeAll();
         for (Order order:orderRepository.find()){
+            if(order.getUser().equals(username))
                 ordersList.add(order);
         }
         return ordersList;

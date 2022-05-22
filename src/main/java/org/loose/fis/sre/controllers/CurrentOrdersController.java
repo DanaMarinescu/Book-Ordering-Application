@@ -34,8 +34,11 @@ public class CurrentOrdersController implements Initializable {
     @FXML
     private TableColumn<Order,Integer>stock;
     @FXML
+    private TableColumn<Order,String>username;
+    @FXML
     private TextField orderAccept;
 
+    private static String user;
     private Scene scene;
     private Stage window;
     @Override
@@ -46,11 +49,13 @@ public class CurrentOrdersController implements Initializable {
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
         stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        username.setCellValueFactory(new PropertyValueFactory<>("user"));
         currentOrders.setItems(OrderService.getCurrentOrders());
     }
 
     public void acceptOrder(javafx.event.ActionEvent actionEvent) throws IOException{
         if(currentOrders.getSelectionModel().getSelectedItem().getStock()>=1) {
+            user=currentOrders.getSelectionModel().getSelectedItem().getUser();
             OrderService.editStatus(currentOrders.getSelectionModel().getSelectedItem(), "Accepted");
             scene=new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("applyDiscount.fxml")));
             window=(Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -64,6 +69,9 @@ public class CurrentOrdersController implements Initializable {
 
     }
 
+    public static String getUser(){
+        return user;
+    }
 
     public void rejectOrder(){
         OrderService.editStatus(currentOrders.getSelectionModel().getSelectedItem(),"Rejected");

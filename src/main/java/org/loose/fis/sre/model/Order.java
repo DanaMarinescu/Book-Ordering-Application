@@ -22,15 +22,14 @@ public class Order {
 
     public Order(){}
 
-
-    public Order(String bookTitle, String author, int year, float price, String status,int stock,String user) {
+    public Order(String bookTitle, String author, int year, float price, String status, int stock, String user) {
         this.bookTitle = bookTitle;
         this.author = author;
         this.year = year;
         this.price = price;
         this.status = status;
-        this.stock=stock;
-        this.user=user;
+        this.stock = stock;
+        this.user = user;
     }
 
 
@@ -82,11 +81,12 @@ public class Order {
         this.stock = stock;
     }
 
+
     public String getUser() {
         return user;
     }
 
-    public void setUser(String userID) {
+    public void setUser(String user) {
         this.user = user;
     }
 

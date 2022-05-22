@@ -32,12 +32,13 @@
    <children>
       <TableView fx:id="currentOrders" prefHeight="282.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <columns>
-          <TableColumn fx:id="bookTitle" prefWidth="160.0" text="Book Title" />
-            <TableColumn fx:id="authorName" prefWidth="90.0" text="Author" />
-          <TableColumn fx:id="year" prefWidth="60.0" text="Year" />
-            <TableColumn fx:id="price" prefWidth="60.0" text="Price" />
-            <TableColumn fx:id="status" prefWidth="70.0" text="Status" />
-            <TableColumn fx:id="stock" prefWidth="60.0" text="Stock" />
+          <TableColumn fx:id="bookTitle" prefWidth="104.00006103515625" text="Book Title" />
+            <TableColumn fx:id="authorName" prefWidth="77.60003662109375" text="Author" />
+          <TableColumn fx:id="year" prefWidth="62.39996337890625" text="Year" />
+            <TableColumn fx:id="price" prefWidth="61.5999755859375" text="Price" />
+            <TableColumn fx:id="status" prefWidth="66.39996337890625" text="Status" />
+            <TableColumn fx:id="stock" prefWidth="70.39996337890625" text="Stock" />
+            <TableColumn fx:id="username" prefWidth="60.79998779296875" text="User" />
         </columns>
       </TableView>
       <Button mnemonicParsing="false" onAction="#rejectOrder" prefHeight="30.0" prefWidth="130.0" text="Reject" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
