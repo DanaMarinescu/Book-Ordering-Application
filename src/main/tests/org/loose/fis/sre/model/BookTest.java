@@ -1,32 +1,32 @@
-package org.loose.fis.sre.tests;
+package org.loose.fis.sre.model;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
-import org.loose.fis.sre.model.Book;
+import org.junit.jupiter.api.Test;
 
-public class BookTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class BookTest {
+
     @Test
-    public void getTitleTest() {
+    void getTitle() {
         Book b = new Book("Title", 2001, 23.34f, "authorName", 10);
         Assertions.assertEquals("Title", b.getTitle());
     }
 
     @Test
-    public void getAuthorNameTest() {
+    void getYear() {
         Book b = new Book("Title", 2001, 23.34f, "authorName", 10);
-        Assertions.assertEquals("author", b.getAuthorName());
+        Assertions.assertEquals(2001, b.getYear());
     }
 
     @Test
-    public void getPriceTest() {
+    void getAuthorName() {
         Book b = new Book("Title", 2001, 23.34f, "authorName", 10);
-        Assertions.assertEquals(23.34f, b.getPrice());
+        Assertions.assertEquals("authorName", b.getAuthorName());
     }
 
-
     @Test
-    public void setTitleTest() {
+    void setTitle() {
         Book b = new Book();
         String s = "title";
         b.setTitle(s);
@@ -34,7 +34,11 @@ public class BookTest {
     }
 
     @Test
-    public void setAuthorNameTest() {
+    void setYear() {
+    }
+
+    @Test
+    void setAuthorName() {
         Book b = new Book();
         String s = "authorName";
         b.setAuthorName(s);
@@ -42,7 +46,13 @@ public class BookTest {
     }
 
     @Test
-    public void setPriceTest() {
+    void getPrice() {
+        Book b = new Book("Title", 2001, 23.34f, "authorName", 10);
+        Assertions.assertEquals(23.34f, b.getPrice());
+    }
+
+    @Test
+    void setPrice() {
         Book b = new Book();
         Float p = 23.34f;
         b.setPrice(p);
@@ -50,28 +60,34 @@ public class BookTest {
     }
 
     @Test
-    public void equalsTest1() {
+    void getStock() {
+        Book b = new Book("Title", 2001, 23.34f, "authorName", 10);
+        Assertions.assertEquals(10, b.getStock());
+    }
+
+    @Test
+    void setStock() {
+        Book b = new Book();
+        int st=10;
+        b.setStock(st);
+        Assertions.assertEquals(st, b.getPrice());
+    }
+
+    @Test
+    void testEquals() {
         Book b1 = new Book();
         Book b2 = new Book();
         Assertions.assertEquals(true, b1.equals(b2));
     }
 
     @Test
-    public void equalsTest2() {
+    void testEquals2(){
         Book b1 = new Book("Title", 2001, 23.34f, "authorName", 10);
         Book b2 = new Book("Title", 2001, 23.34f, "authorName", 10);
-        Assertions.assertEquals(false, b1.equals(b2));
+        Assertions.assertEquals(true, b1.equals(b2));
     }
 
     @Test
-    public void hashCodeTest1() {
-        Book b = new Book("Title", 2001, 23.34f, "authorName", 10);
-        Assertions.assertEquals(-2042632799 ,b.hashCode());
-    }
-
-    @Test
-    public void hashCodeTest2() {
-        Book b = new Book();
-        Assertions.assertEquals(0 ,b.hashCode());
+    void testHashCode() {
     }
 }
