@@ -6,7 +6,9 @@ import org.dizitart.no2.IndexType;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.Index;
 import org.dizitart.no2.objects.Indices;
+import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.model.Book;
 import org.loose.fis.sre.model.Order;
 
@@ -21,6 +23,16 @@ public class OrderService {
                 .openOrCreate("test", "test");
 
         orderRepository = database.getRepository(Order.class);
+    }
+
+    public static void close(){
+        orderRepository.close();
+    }
+
+    public static boolean isClosed(){
+        if(orderRepository!=null)
+        return orderRepository.isClosed();
+        else return true;
     }
 
     public static void addOrder(String username,Book bookOrdered, String status) {
@@ -39,9 +51,7 @@ public class OrderService {
     }
 
     public static void clearDatabase(){
-        for (Order order: orderRepository.find()){
-            orderRepository.remove(order);
-        }
+        orderRepository.remove(ObjectFilters.ALL);
     }
 
     public static ObservableList<Order> getCurrentOrders(){

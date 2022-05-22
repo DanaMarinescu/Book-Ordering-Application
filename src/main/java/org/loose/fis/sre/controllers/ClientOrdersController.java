@@ -8,9 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.loose.fis.sre.model.Book;
+import org.loose.fis.sre.model.Order;
 import org.loose.fis.sre.services.BookService;
 import org.loose.fis.sre.services.OrderService;
 
@@ -22,28 +24,44 @@ public class ClientOrdersController implements Initializable {
     private Stage window;
     private Scene scene;
     private Parent root;
-    private static Book selectat;
+    private static Order selectat;
 
         @FXML
-        private TableColumn<Book, String> id_order;
+        private TableColumn<Order, String> id_order;
 
         @FXML
-        private TableColumn<Book, String> id_status;
+        private TableColumn<Order, String> id_status;
 
         @FXML
-        private TableView<Book> table;
+        private TableView<Order> table;
+
+        @FXML
+        private TextField id_text;
+        @FXML
+        private TextField id_auth;
+        @FXML
+        private TextField id_s;
+        @FXML
+        private TextField id_p;
 
 
     @FXML
-        void seeDetails(javafx.event.ActionEvent actionEvent) throws IOException {
+        void seeDetails() {
              selectat =table.getSelectionModel().getSelectedItem();
-
+             String text = table.getSelectionModel().getSelectedItem().getBookTitle();
+             String text1 = table.getSelectionModel().getSelectedItem().getAuthor();
+             String text2 = table.getSelectionModel().getSelectedItem().getStatus();
+             String text3 = Float.toString(table.getSelectionModel().getSelectedItem().getPrice());
+             id_text.setText(text);
+             id_auth.setText(text1);
+             id_s.setText(text2);
+             id_p.setText(text3);
         }
 
 
         @FXML
-        void toCart(javafx.event.ActionEvent actionEvent) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Cart.fxml"));
+        void toHomePage(javafx.event.ActionEvent actionEvent) throws IOException {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("HomePage.fxml"));
             window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
             window.setScene(scene);
@@ -52,13 +70,11 @@ public class ClientOrdersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        BookService.initDatabase(BooksController.getSelect().getTitle());
-        OrderService.initDatabase((PublishingHousesController.getSelectat()));
+        PublishingHousesController.initializePublishingHouses();
+        id_order.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));
+        id_status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        id_order.setCellValueFactory(new PropertyValueFactory<>("Order"));
-        id_status.setCellValueFactory(new PropertyValueFactory<>("Status"));
-
-        table.getItems().add(CartController.getSelectat());
+        table.setItems(OrderService.getClientOrders(LoginController.currentUser.getUsername()));
     }
 }
 

@@ -46,8 +46,8 @@ public class CartController implements Initializable {
     private TextField id_ms;
 
     @FXML
-    void toBooks(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Books.fxml"));
+    void toHomePage(javafx.event.ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("HomePage.fxml"));
         window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         window.setScene(scene);
@@ -67,9 +67,6 @@ public class CartController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        BookService.initDatabase(BooksController.getSelect().getTitle());
-        OrderService.initDatabase((PublishingHousesController.getSelectat()));
         id_title.setCellValueFactory(new PropertyValueFactory<>("title"));
         id_year.setCellValueFactory(new PropertyValueFactory<>("year"));
         id_price.setCellValueFactory(new PropertyValueFactory<>("price"));

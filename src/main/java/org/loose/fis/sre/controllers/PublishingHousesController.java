@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import org.loose.fis.sre.model.ModelPH;
+import org.loose.fis.sre.services.OrderService;
 import org.loose.fis.sre.services.PublishingHousesService;
 
 import java.io.IOException;
@@ -58,10 +59,18 @@ public class PublishingHousesController implements Initializable  {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        col_name.setCellValueFactory(new PropertyValueFactory<ModelPH, String>("name"));
-
+       initializePublishingHouses();
        table.setItems(PublishingHousesService.getPublishingHouses());
 
 
+    }
+
+    public static void initializePublishingHouses(){
+        ObservableList<ModelPH> pubHouses=PublishingHousesService.getPublishingHouses();
+        for (ModelPH ph:pubHouses){
+            if(OrderService.isClosed())
+            OrderService.initDatabase(ph.getName());
+        }
     }
 }
 

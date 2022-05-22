@@ -5,50 +5,89 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="600.0" style="-fx-background-color: #8FBC8F;"
-          xmlns:fx="http://javafx.com/fxml/1"
-          xmlns="http://javafx.com/javafx/18"
-fx:controller="org.loose.fis.sre.controllers.ClientOrdersController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="600.0" style="-fx-background-color: #8FBC8F;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.ClientOrdersController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.39996337890625" minWidth="10.0" prefWidth="114.39996337890625" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" prefWidth="485.60003662109375" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.39996337890625" minWidth="10.0" prefWidth="201.60001220703126" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" prefWidth="399.1999877929687" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="244.59998168945313" minHeight="10.0" prefHeight="54.199987792968756" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="444.6000122070312" minHeight="10.0" prefHeight="444.6000122070312" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" onAction="#toCart" prefHeight="26.0" prefWidth="120.0" text="Back" textFill="#76b449" GridPane.rowIndex="1">
+      <Button mnemonicParsing="false" onAction="#toHomePage" prefHeight="36.0" prefWidth="202.0" text="Back" textFill="#76b449" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets />
+            <Insets top="-410.0" />
          </GridPane.margin>
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="19.0" />
          </font>
       </Button>
-      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TableView fx:id="table" prefHeight="421.0" prefWidth="442.0" style="-fx-background-color: #a3c1ad;" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <columns>
-          <TableColumn fx:id="id_order" prefWidth="250.39995419979095" text="Order" />
-          <TableColumn fx:id="id_status" prefWidth="236.0" text="Status" />
+          <TableColumn fx:id="id_order" prefWidth="290.3999572992325" style="-fx-background-color: #d1bea8;" text="Order" />
+          <TableColumn fx:id="id_status" prefWidth="104.79998779296875" style="-fx-background-color: #d1bea8;" text="Status" />
         </columns>
       </TableView>
       <Label alignment="CENTER" prefHeight="60.0" prefWidth="486.0" text="Past Orders" textFill="#358135" GridPane.columnIndex="1">
          <font>
             <Font name="Bookman Old Style Bold Italic" size="28.0" />
          </font>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.038479533046483994" green="0.2210526317358017" blue="0.11759454011917114" />
+               </color>
+            </InnerShadow>
+         </effect>
       </Label>
-      <Button mnemonicParsing="false" onAction="#seeDetails" prefHeight="36.0" prefWidth="122.0" text="Details" textFill="#4ea444" GridPane.rowIndex="1">
+      <Button mnemonicParsing="false" onAction="#seeDetails" prefHeight="36.0" prefWidth="212.0" text="Details" textFill="#4ea444" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets top="90.0" />
+            <Insets top="-300.0" />
          </GridPane.margin>
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="19.0" />
          </font>
       </Button>
+      <TextField fx:id="id_text" alignment="CENTER" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: #d1bea8;" text="See Title" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets top="-200.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="Calisto MT" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="id_auth" alignment="CENTER" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #d1bea8;" text="See Author" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets top="-100.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="Calisto MT" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="id_s" alignment="CENTER" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #d1bea8;" text="See Status" GridPane.rowIndex="1">
+         <font>
+            <Font name="Calisto MT" size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="id_p" alignment="CENTER" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #d1bea8;" text="See Price" GridPane.rowIndex="1">
+         <font>
+            <Font name="Calisto MT" size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="100.0" />
+         </GridPane.margin>
+      </TextField>
    </children>
 </GridPane>
