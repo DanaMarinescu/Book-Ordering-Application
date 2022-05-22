@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" prefHeight="400" prefWidth="600" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.ApplyDiscountController">
+<GridPane alignment="center" prefHeight="400" prefWidth="600" style="-fx-background-color: #bc8f8f;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.ApplyDiscountController">
     <columnConstraints>
         <ColumnConstraints />
         <ColumnConstraints prefWidth="600.0" />
@@ -30,7 +31,7 @@
         <RowConstraints />
     </rowConstraints>
     <children>
-        <TableView fx:id="pastOrders" prefHeight="282.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <TableView fx:id="pastOrders" prefHeight="282.0" prefWidth="500.0" style="-fx-background-color: #efdecd;" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <columns>
                 <TableColumn fx:id="bookTitle" prefWidth="204.79998779296875" text="Book Title" />
                 <TableColumn fx:id="authorName" prefWidth="86.40008544921875" text="Author" />
@@ -41,17 +42,23 @@
             </columns>
         </TableView>
 
-        <Button mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="130.0" text="Back" GridPane.columnIndex="2" GridPane.rowIndex="1">
+        <Button mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #f0ead6;" text="Back" textFill="#991175" GridPane.columnIndex="2" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets top="300.0" />
             </GridPane.margin>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
         </Button>
-      <Button mnemonicParsing="false" onAction="#applyDiscount" prefHeight="30.0" prefWidth="130.0" text="Apply Discount" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#applyDiscount" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #f0ead6;" text="Apply Discount" textFill="#991175" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="50.0" />
          </GridPane.margin>
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+         </font>
       </Button>
-      <ChoiceBox fx:id="amount" prefHeight="30.0" prefWidth="130.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <ChoiceBox fx:id="amount" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #f0ead6;" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="90.0" />
          </GridPane.margin>
