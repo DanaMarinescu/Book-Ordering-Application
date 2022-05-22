@@ -89,5 +89,8 @@ class BookTest {
 
     @Test
     void testHashCode() {
+        Book b1 = new Book("Title", 2001, 23.34f, "authorName", 10);
+        Book b2 = new Book("Title", 2001, 23.34f, "authorName", 10);
+        Assertions.assertTrue(b1.hashCode()==b2.hashCode());
     }
 }
