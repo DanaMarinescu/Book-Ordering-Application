@@ -75,8 +75,7 @@ public class BooksController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-       BookService.initDatabase(PublishingHousesController.getSelectat());
+        BookService.initDatabase(PublishingHousesController.getSelectat());
         id_name.setCellValueFactory(new PropertyValueFactory<>("title"));
         id_year.setCellValueFactory(new PropertyValueFactory<>("year"));
         id_price.setCellValueFactory(new PropertyValueFactory<>("price"));

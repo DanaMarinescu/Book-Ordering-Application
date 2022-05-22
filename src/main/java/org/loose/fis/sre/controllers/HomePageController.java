@@ -23,7 +23,7 @@ public class HomePageController{
     private Parent root;
         @FXML
         public void Orders(ActionEvent event)throws IOException {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("PastOrders.fxml")); //Orders page
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Orders.fxml")); //Orders page
             window= (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             window.setScene(scene);

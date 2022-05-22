@@ -21,28 +21,28 @@
       <RowConstraints maxHeight="426.39999237060545" minHeight="10.0" prefHeight="426.39999237060545" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TableView fx:id="table" prefHeight="426.0" prefWidth="366.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TableView fx:id="table" prefHeight="426.0" prefWidth="366.0" style="-fx-background-color: #e3dac9;" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <columns>
-          <TableColumn fx:id="id_title" prefWidth="175.99998474121094" text="Title" />
-          <TableColumn fx:id="id_year" prefWidth="53.5999755859375" text="Year" />
-            <TableColumn fx:id="id_author" prefWidth="108.800048828125" text="Author" />
-            <TableColumn fx:id="id_price" prefWidth="55.199951171875" text="Price" />
+          <TableColumn fx:id="id_title" prefWidth="175.99998474121094" style="-fx-background-color: #c4aead;" text="Title" />
+          <TableColumn fx:id="id_year" prefWidth="53.5999755859375" style="-fx-background-color: #c4aead;" text="Year" />
+            <TableColumn fx:id="id_author" prefWidth="108.800048828125" style="-fx-background-color: #c4aead;" text="Author" />
+            <TableColumn fx:id="id_price" prefWidth="55.199951171875" style="-fx-background-color: #c4aead;" text="Price" />
         </columns>
       </TableView>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="374.0" text="CART" textAlignment="CENTER" textFill="#9c2d2d" GridPane.columnIndex="1">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="374.0" text="CART" textAlignment="CENTER" textFill="#682860" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
          <font>
-            <Font name="Book Antiqua" size="35.0" />
+            <Font name="Book Antiqua Bold" size="35.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" onAction="#toBooks" prefHeight="26.0" prefWidth="110.0" text="Back" textFill="#d47373" GridPane.rowIndex="1">
+      <Button mnemonicParsing="false" onAction="#toHomePage" prefHeight="26.0" prefWidth="110.0" text="Back" textFill="#856088" GridPane.rowIndex="1">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="19.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#toOrder" prefHeight="37.0" prefWidth="135.0" text="Order" textFill="#df8c8c" GridPane.rowIndex="1">
+      <Button mnemonicParsing="false" onAction="#toOrder" prefHeight="37.0" prefWidth="135.0" text="Order" textFill="#856088" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets top="90.0" />
          </GridPane.margin>
@@ -54,6 +54,9 @@
          <GridPane.margin>
             <Insets top="200.0" />
          </GridPane.margin>
+         <font>
+            <Font name="Ink Free" size="13.0" />
+         </font>
       </TextField>
    </children>
 </GridPane>
