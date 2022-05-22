@@ -35,6 +35,8 @@ public class ApplyDiscountController implements Initializable {
     @FXML
     private TableColumn<Order, String >status;
     @FXML
+    private TableColumn<Order,String> username;
+    @FXML
     private ChoiceBox amount;
 
     private Scene scene;
@@ -47,7 +49,8 @@ public class ApplyDiscountController implements Initializable {
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         authorName.setCellValueFactory(new PropertyValueFactory<>("author"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        pastOrders.setItems(OrderService.getClientOrders());
+        username.setCellValueFactory(new PropertyValueFactory<>("user"));
+        pastOrders.setItems(OrderService.getClientOrders(CurrentOrdersController.getUser()));
     }
 
     @FXML

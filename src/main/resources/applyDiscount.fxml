@@ -37,6 +37,7 @@
                 <TableColumn fx:id="year" prefWidth="58.4000244140625" text="Year" />
                 <TableColumn fx:id="price" prefWidth="52.0" text="Price" />
                 <TableColumn fx:id="status" prefWidth="96.79998779296875" text="Status" />
+            <TableColumn fx:id="username" prefWidth="96.79998779296875" text="User" />
             </columns>
         </TableView>
 
